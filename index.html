@@ -19,6 +19,14 @@
     polaris-chip {
       margin: 16px;
     }
+    my-card {
+      --card-title-bg-color: black;
+      --card-title-color: white;
+    }
+    my-card.fancy{
+      --card-title-bg-color: red;
+      --card-title-color: white;
+    }
   </style>
   <title>polaris-chip / my-card</title>
 </head>
@@ -29,10 +37,19 @@
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
-  <polaris-chip title="Grants and donations"></polaris-chip>
+  <polaris-chip title="Grants"></polaris-chip>
+  <polaris-chip title="Chip Default"></polaris-chip>
+  <polaris-chip title="Chip Default"></polaris-chip>
+  <polaris-chip title="Chip Default"></polaris-chip>
+  <polaris-chip title="Chip Default"></polaris-chip>
+  <span>just a span for comparison</span>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+  <my-card title="Coffee Challenge" body="Can you complete the coffee challenge? I know I can't" link="https://www.hopkinsmedicine.org/health/wellness-and-prevention/9-reasons-why-the-right-amount-of-coffee-is-good-for-you" alt="coffee challenge rules" image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM1rr5IOtJINvRDTB9aRkkvYjpcn7S5sSISg&s"></my-card>
+  <my-card title="Abandoned Island" body="Could you survive 10 days on an island by yourself?" link="https://www.desertislandsurvival.com/how-to-survive-on-a-desert-island/" alt="an island" image="https://media.istockphoto.com/id/1369175723/photo/isolated-tropical-island-middle-of-ocean.jpg?s=612x612&w=0&k=20&c=vUPFdK_-MgUs1dme__anaFG_hzar5Zv6venw45_DzHg="></my-card>
+  <my-card title="Strawberry" class="fancy" body="Go strawberry picking" link="https://www.stritesorchard.com/copy-of-apples-2" alt="a single red strawberry"></my-card>
+  <my-card title="Cats or Dogs" body="Do you like cats or dogs better?" link="https://www.cats.org.uk/cats-blog/5-differences-between-cats-and-dogs" alt="cat vs dog pic" image="https://framerusercontent.com/images/p0IwOBxm7EZ7bxFBcmCmPOFWbg.jpeg?width=2006&height=956"></my-card>
+  <my-card title="Apples" class="fancy" body="Go pick some red apples" link="https://www.paeats.org/feature/apple-picking-in-pennsylvania/" alt="basket of apples" image="https://img.lb.wbmdstatic.com/vim/live/webmd/consumer_assets/site_images/articles/health_tools/healing_foods_slideshow/1800ss_getty_rf_apples.jpg?resize=750px:*&output-quality=75"></my-card>
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
