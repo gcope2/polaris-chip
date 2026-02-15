@@ -19,11 +19,13 @@ export class MyCard extends LitElement {
     this.alt = "Red Strawberry";
     this.link = "https://hax.psu.edu/";
     this.body = "This is a red strawberry";
+    this.fancy = false;
+    this.button = "Details";
   }
 
   static get styles() {
     return css`
-      :host {
+
         .button {
           background-color: navy;
           color: white;
@@ -35,64 +37,88 @@ export class MyCard extends LitElement {
 
         .button-wrap {
           text-align: center;
-          margin: 30px 0;
+          margin: 20px 0;
         }
 
-        #cardlist .block.fancy {
+        .block.fancy {
           background-color: blue;
         }
 
-        #cardlist .block {
+        .block {
           display: block;
           background-color: black;
           color: white;
-          height: 500px;
+          height: 400px;
           width: 400px;
           padding: 40px;
           margin: 20px auto;
           border-radius: 10px;
-          h1 {
-            text-align: center;
-          }
-          p {
-            text-align: center;
-          }
+          text-align: center;
         }
 
         .image {
           text-align: center;
-          margin: 30px 0;
+          margin: 20px 0;
         }
 
         .image img {
           width: 300px;
           max-width: 100%;
           height: auto;
+          max-height: 200px;
           border-radius: 10px;
-        }
-
-        .control-wrapper {
-          background-color: blue;
-          padding: 15px;
-          border: 10px solid orange;
         }
 
         .card-title {
           background-color: var(--card-title-bg-color, black);
           color: var(--card-title-color, white);
+          margin: 10px;
         }
+
+        details[open] summary {
+          font-weight: bold;
+        }
+
+        details div {
+          border: 2px solid blue;
+          text-align: left;
+          overflow: auto;
+        }
+
+        details summary {
+          text-align: left;
+          font-size: 20px;
+        }
+
+        .flowing {
+          max-height: 50px;
+          max-width: 350px;
+          overflow-y: auto;
+        }
+      
+      :host([fancy]) {
+        display: block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
     `;
   }
 
   render() {
     return html`
-      <div id="cardlist">
+      <div>
       <section class="block">
         <div>
-            <h1 class="card-title">${this.title}</h1>
-            <p>${this.body}</p>
+          <h1 class="card-title">${this.title}</h1>
         </div>
+
+        <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+          <summary>Description</summary>
+          <div class="flowing">
+            <slot>${this.body}</slot>
+          </div>
+        </details>
 
         <div class="image">
           <img class = "card-image" alt="${this.alt}" src="${this.image}">
@@ -100,7 +126,7 @@ export class MyCard extends LitElement {
 
         <div class="button-wrap">
           <a href="${this.link}">
-            <button class="button">Details</button>
+            <button class="button">${this.button}</button>
           </a>
         </div>
       </section>
@@ -109,13 +135,26 @@ export class MyCard extends LitElement {
       `;
   }
 
+  // put this anywhere on the MyCard class; just above render() is probably good
+    openChanged(e) {
+      console.log(e);
+      if (e.target.getAttribute('open') !== null) {
+        this.fancy = true;
+      }
+      else {
+        this.fancy = false;
+      }
+    }
+
   static get properties() {
     return {
-      title: { type: String },
+      title: { type: String, reflect: true },
       image: { type: String },
       alt: { type: String },
       link: { type: String },
       body: { type: String },
+      fancy: {type: Boolean, reflect: true },
+      button: { type: String },
     };
   }
 }
