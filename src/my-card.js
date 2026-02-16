@@ -49,7 +49,7 @@ export class MyCard extends LitElement {
           display: block;
           background-color: black;
           color: white;
-          height: 400px;
+          height: 450px;
           width: 300px;
           padding: 40px;
           margin: 20px auto;
@@ -57,7 +57,7 @@ export class MyCard extends LitElement {
           text-align: center;
         }
 
-        .media {
+        meme-maker .media {
           width: 300px;
           max-width: 100%;
           height: auto;
